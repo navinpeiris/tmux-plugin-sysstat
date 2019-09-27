@@ -22,6 +22,15 @@ Features
 Tested on: OS X El Capitan 10.11.5, Ubuntu 14 LTS, CentOS 7, FreeBSD 11.1.
 
 
+Prerequisites
+-------------
+
+Install `coreutils` using brew:
+
+```
+brew install coreutils
+```
+
 Installation
 ------------
 Best installed through [Tmux Plugin Manager](https://github.com/tmux-plugins/tpm) (TMP). Add following line to your `.tmux.conf` file:
@@ -320,7 +329,7 @@ So the question what constitutes `free` and `used` memory. It turns out, that va
 - top. Used = `used = active + inactive + occupied by compressor + wired`; Free = `free + speculative` Resident set size (RSS) = `active`
 - OSX activity Monitor. Used = `app memory + wired + compressor`. Note, it's not clear what is app memory.
 
-In general, they either treat currently used memory, which can be reclaimed in case of need (cached, inactive, occupied by compressor), as `used` or `free`. 
+In general, they either treat currently used memory, which can be reclaimed in case of need (cached, inactive, occupied by compressor), as `used` or `free`.
 
 It makes sense to talk about `available` memory rather than `free` one. Available memory is unused memory + any used memory which can be reclaimed for application needs.
 
@@ -364,7 +373,7 @@ Cached:           529040 kB
 ```
 free/available = MemAvailable;  // if MemAvailable present
 free/available = MemFree + Buffers + Cached;
-used = MemTotal - free/avaialble 
+used = MemTotal - free/avaialble
 ```
 
 Using `MemAvailable` is more accurate way of getting available memory, rather than manual calculation `free + buffers + cache`, because the assumption that `buffers + cache` can be 100% reclaimed for new application needs might be wrong. When using `MemAvailable`, OS calculates available memory for you, which is apparently better and accurate approach.
